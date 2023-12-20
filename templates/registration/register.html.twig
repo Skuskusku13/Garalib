@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-5">Register</h1>
+
+    <div class="w 25 d-flex flex-column align-items-center">
+
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nom, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+        {{ form_row(registrationForm.prenom, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+        {{ form_row(registrationForm.email, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password',
+            'attr': {
+                'class': 'form-control my-3'
+            }}) }}
+
+        <label for="selectOption" class="my-3">Client ou Technicien</label>
+        <select name="selectOption" id="" class="form-select">
+            <option value="Choisir un" selected disabled hidden>Vous êtes ?</option>
+            <option value="Client">Un Client</option>
+            <option  value="Technicien">Un technicien</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary my-4">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
