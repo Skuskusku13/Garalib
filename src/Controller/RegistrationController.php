@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\Client;
+use App\Entity\Technicien;
+use App\Entity\Utilisateur;
 use App\Form\RegistrationFormType;
+use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +17,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
+
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher,
+                             EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
+
+        $user = new Utilisateur();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -29,11 +36,24 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
+            $usertype = $request->request->get('selectOption');
 
-            return $this->redirectToRoute('app_home');
+            if($usertype === 'Client') {
+                $client = new Client();
+                $client->setIdUser($user);
+                $user->setRoles(['ROLE_CLIENT']);
+                $entityManager->persist($client);
+                $entityManager->flush();
+            } else {
+                $technicien = new Technicien();
+                $technicien->setIdUser($user);
+                $user->setRoles(['ROLE_TECHNICIEN']);
+                $entityManager->persist($technicien);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_technicien');
+            }
+
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
