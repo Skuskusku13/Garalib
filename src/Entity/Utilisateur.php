@@ -35,6 +35,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToOne(mappedBy: 'idUser', cascade: ['persist', 'remove'])]
+    private ?Technicien $technicien = null;
+
+    #[ORM\OneToOne(mappedBy: 'idUser', cascade: ['persist', 'remove'])]
+    private ?Client $client = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,5 +131,49 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getTechnicien(): ?Technicien
+    {
+        return $this->technicien;
+    }
+
+    public function setTechnicien(?Technicien $technicien): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($technicien === null && $this->technicien !== null) {
+            $this->technicien->setIdUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($technicien !== null && $technicien->getIdUser() !== $this) {
+            $technicien->setIdUser($this);
+        }
+
+        $this->technicien = $technicien;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($client === null && $this->client !== null) {
+            $this->client->setIdUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($client !== null && $client->getIdUser() !== $this) {
+            $client->setIdUser($this);
+        }
+
+        $this->client = $client;
+
+        return $this;
     }
 }

@@ -13,8 +13,11 @@ class Technicien
     #[ORM\Column]
     private ?int $idtechnicien = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $qualifications = null;
+
+    #[ORM\OneToOne(inversedBy: 'technicien', cascade: ['persist', 'remove'])]
+    private ?Utilisateur $idUser = null;
 
     public function getIdTechnicien(): ?int
     {
@@ -32,4 +35,18 @@ class Technicien
 
         return $this;
     }
+
+    public function getIdUser(): ?Utilisateur
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?Utilisateur $idUser): static
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+
 }
