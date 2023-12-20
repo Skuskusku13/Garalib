@@ -20,8 +20,7 @@ class RegistrationController extends AbstractController
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher,
-                             EntityManagerInterface $entityManager,
-                             bool $formTechnicien = false): Response
+                             EntityManagerInterface $entityManager): Response
     {
 
         $user = new Utilisateur();
@@ -49,8 +48,9 @@ class RegistrationController extends AbstractController
                 $technicien = new Technicien();
                 $technicien->setIdUser($user);
                 $user->setRoles(['ROLE_TECHNICIEN']);
-                $entityManager->persist($user);
+                $entityManager->persist($technicien);
                 $entityManager->flush();
+                return $this->redirectToRoute('app_technicien');
             }
 
             return $this->redirectToRoute('app_login');
