@@ -7,9 +7,10 @@
 /public/bundles/
 /var/
 /vendor/
+
 .DS_Store
-.idea/workspace.xml
 src/.DS_Store
+.idea
 
 ###< symfony/framework-bundle ###
 
