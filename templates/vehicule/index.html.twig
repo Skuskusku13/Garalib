@@ -3,7 +3,7 @@
 {% block title %}Hello VehiculeController!{% endblock %}
 
 {% block body %}
-    <h1>Mon véhicule</h1>
+    <h1 class="text-center my-4">Mon véhicule</h1>
 
     <div class="w 25 d-flex flex-column align-items-center">
         {% if vehiculeForm is defined and vehiculeForm is not empty %}
@@ -19,14 +19,27 @@
             {{ form_row(vehiculeForm.annee, {'attr': {
                 'class': 'form-control my-3'
             }}) }}
-            {{ form_row(vehiculeForm.client, {'attr': {
-                'class': 'form-select my-3',
-            }, 'data': app.user.client.id }) }}
-
-            {{ dump(app.user.client.id) }}
 
             <button type="submit" class="btn btn-primary my-4">Ajouter mon véhicule</button>
             {{ form_end(vehiculeForm) }}
+        {% endif %}
+
+
+        {% if vehicules is not empty %}
+            <div class="w-75 my-5 d-flex justify-content-evenly">
+            {% for vech in vehicules %}
+                <div class="card mx-3" style="width: 18rem;">
+                    <img class="card-img-top" src="https://m.media-amazon.com/images/I/51ITHBLbX8L._AC_UF1000,1000_QL80_.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ vech.marque }}</h5>
+                        <p class="card-text">{{ vech.modele}}</p>
+                        <p class="annee">{{ vech.annee }}</p>
+                        <button type="submit" class="btn btn-danger">Supprimer
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

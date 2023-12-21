@@ -17,10 +17,6 @@ class VehiculeType extends AbstractType
             ->add('marque')
             ->add('modele')
             ->add('annee')
-            ->add('client', EntityType::class, [
-                'class' => Client::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 
