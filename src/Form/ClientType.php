@@ -12,7 +12,7 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 //        mettre le iduser foreign key ici
-        $builder->add("");
+//        $builder->add("");
     }
 
     public function configureOptions(OptionsResolver $resolver): void

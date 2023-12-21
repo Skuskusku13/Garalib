@@ -11,7 +11,7 @@ class Technicien
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $idtechnicien = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $qualifications = null;
@@ -19,9 +19,9 @@ class Technicien
     #[ORM\OneToOne(inversedBy: 'technicien', cascade: ['persist', 'remove'])]
     private ?Utilisateur $idUser = null;
 
-    public function getIdTechnicien(): ?int
+    public function getId(): ?int
     {
-        return $this->idtechnicien;
+        return $this->id;
     }
 
     public function getQualifications(): ?string

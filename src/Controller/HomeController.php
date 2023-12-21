@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(UtilisateurRepository $utilisateurRepository, TechnicienRepository $technicienRepository, Security $security): Response
+    public function index(UtilisateurRepository $utilisateurRepository, TechnicienRepository $technicienRepository): Response
     {
 
         $user = $this->getUser();

@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d01e4a8-8841-4cbd-92c1-2c0337c84ff8" name="Changes" comment=".env readded">
+    <list default="true" id="9d01e4a8-8841-4cbd-92c1-2c0337c84ff8" name="Changes" comment="inscription technicien + qualification et securité + authentification automatique après l'inscription">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20231221103425.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20231221105053.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Vehicule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/VehiculeRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TechnicienController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TechnicienController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TechnicienType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TechnicienType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/technicien/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/technicien/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Technicien.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Technicien.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,11 +190,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Shell Script.Garalib Run.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "2-create-vehicule-client",
     "javascript.karma.karma_node_package_dir": "",
     "js.buildTools.grunt.grunt-cli.package": "",
     "js.buildTools.gulp.gulp_package_dir": "",
@@ -273,6 +274,7 @@
       <workItem from="1703101193006" duration="358000" />
       <workItem from="1703101576920" duration="151000" />
       <workItem from="1703102418907" duration="16286000" />
+      <workItem from="1703153355487" duration="2510000" />
     </task>
     <task id="LOCAL-00001" summary=".env readded">
       <option name="closed" value="true" />
@@ -289,6 +291,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="gitignore" />
     <MESSAGE value=".env readded" />
     <option name="LAST_COMMIT_MESSAGE" value=".env readded" />
