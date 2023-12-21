@@ -10,17 +10,20 @@ use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 
 class RegistrationController extends AbstractController
 {
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher,
-                             EntityManagerInterface $entityManager): Response
+                             EntityManagerInterface $entityManager, Security $security): Response
     {
 
         $user = new Utilisateur();
@@ -37,7 +40,6 @@ class RegistrationController extends AbstractController
             );
 
             $usertype = $request->request->get('selectOption');
-
             if($usertype === 'Client') {
                 $client = new Client();
                 $client->setIdUser($user);
@@ -53,7 +55,10 @@ class RegistrationController extends AbstractController
                 return $this->redirectToRoute('app_technicien');
             }
 
-            return $this->redirectToRoute('app_login');
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            $this->container->get('security.token_storage')->setToken($token);
+
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('registration/register.html.twig', [

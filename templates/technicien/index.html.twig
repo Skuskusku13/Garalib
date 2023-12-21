@@ -1,14 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TechnicienController!{% endblock %}
+{% block title %}Hello {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
    <h1>Technicien registration</h1>
-</div>
+
+   <div class="w 25 d-flex flex-column align-items-center">
+
+       {% if formTechnicien is defined and formTechnicien is not empty %}
+         {{ form_errors(formTechnicien) }}
+
+         {{ form_start(formTechnicien) }}
+         {{ form_row(formTechnicien.qualifications, {'attr': {
+            'class': 'form-control my-3'
+         }}) }}
+
+         <button type="submit" class="btn btn-primary my-4">Register</button>
+         {{ form_end(formTechnicien) }}
+      {% endif %}
+   </div>
 {% endblock %}
