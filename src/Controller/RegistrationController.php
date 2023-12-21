@@ -22,8 +22,7 @@ class RegistrationController extends AbstractController
 {
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher,
-                             EntityManagerInterface $entityManager, Security $security): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
 
         $user = new Utilisateur();
@@ -52,7 +51,6 @@ class RegistrationController extends AbstractController
                 $user->setRoles(['ROLE_TECHNICIEN']);
                 $entityManager->persist($technicien);
                 $entityManager->flush();
-                return $this->redirectToRoute('app_technicien');
             }
 
             $token = new UsernamePasswordToken($user, 'main', $user->getRoles());

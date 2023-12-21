@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VehiculeController!{% endblock %}
+
+{% block body %}
+    <h1>Mon véhicule</h1>
+
+    <div class="w 25 d-flex flex-column align-items-center">
+        {% if vehiculeForm is defined and vehiculeForm is not empty %}
+            {{ form_errors(vehiculeForm) }}
+
+            {{ form_start(vehiculeForm) }}
+            {{ form_row(vehiculeForm.marque, {'attr': {
+                'class': 'form-control my-3'
+            }}) }}
+            {{ form_row(vehiculeForm.modele, {'attr': {
+                'class': 'form-control my-3'
+            }}) }}
+            {{ form_row(vehiculeForm.annee, {'attr': {
+                'class': 'form-control my-3'
+            }}) }}
+            {{ form_row(vehiculeForm.client, {'attr': {
+                'class': 'form-select my-3',
+            }, 'data': app.user.client.id }) }}
+
+            {{ dump(app.user.client.id) }}
+
+            <button type="submit" class="btn btn-primary my-4">Ajouter mon véhicule</button>
+            {{ form_end(vehiculeForm) }}
+        {% endif %}
+    </div>
+{% endblock %}

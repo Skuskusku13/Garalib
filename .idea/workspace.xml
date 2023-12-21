@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d01e4a8-8841-4cbd-92c1-2c0337c84ff8" name="Changes" comment="inscription technicien + qualification et securité + authentification automatique après l'inscription">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20231221103425.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20231221105053.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Vehicule.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/VehiculeRepository.php" afterDir="false" />
+    <list default="true" id="9d01e4a8-8841-4cbd-92c1-2c0337c84ff8" name="Changes" comment="create entity Vehicule">
+      <change afterPath="$PROJECT_DIR$/src/Controller/VehiculeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/VehiculeType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/vehicule/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Technicien.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Technicien.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +20,9 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -274,7 +274,7 @@
       <workItem from="1703101193006" duration="358000" />
       <workItem from="1703101576920" duration="151000" />
       <workItem from="1703102418907" duration="16286000" />
-      <workItem from="1703153355487" duration="2510000" />
+      <workItem from="1703153355487" duration="11848000" />
     </task>
     <task id="LOCAL-00001" summary=".env readded">
       <option name="closed" value="true" />
@@ -284,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703101472482</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="create entity Vehicule">
+      <option name="closed" value="true" />
+      <created>1703157160951</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703157160952</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +302,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="gitignore" />
     <MESSAGE value=".env readded" />
-    <option name="LAST_COMMIT_MESSAGE" value=".env readded" />
+    <MESSAGE value="create entity Vehicule" />
+    <option name="LAST_COMMIT_MESSAGE" value="create entity Vehicule" />
   </component>
 </project>
