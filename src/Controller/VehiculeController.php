@@ -19,12 +19,11 @@ class VehiculeController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, VehiculeRepository $vehiculeRepository): Response
     {
         $form = null;
-        $vehicules = $vehiculeRepository->findAll();
-        dump($vehicules);
         $user = $this->getUser();
         if($user instanceof Utilisateur && in_array('ROLE_CLIENT', $user->getRoles(), true)) {
             $client = $user->getClient();
             if($client instanceof Client) {
+                $vehicules = $vehiculeRepository->findBy(['client' => $client]);
                 $vehicule = new Vehicule();
                 $form = $this->createForm(VehiculeType::class, $vehicule);
                 $form->handleRequest($request);

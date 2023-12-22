@@ -39,6 +39,8 @@ class TechnicienController extends AbstractController
             } else {
                 return $this->redirectToRoute('app_home');
             }
+        } else {
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('technicien/index.html.twig', [

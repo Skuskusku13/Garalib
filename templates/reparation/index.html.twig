@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReparationController!{% endblock %}
+
+{% block body %}
+
+    <div class="w 25 d-flex flex-column align-items-center">
+        {% if reparationForm is defined and reparationForm is not empty %}
+        {{ form_errors(reparationForm) }}
+
+        {{ form_start(reparationForm) }}
+        {{ form_row(reparationForm.description, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+        {{ form_row(reparationForm.dateReparation, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+        {{ form_row(reparationForm.prix, {'attr': {
+            'class': 'form-control my-3'
+        }}) }}
+
+        {{ form_row(reparationForm.client, {'attr': {
+            'class': 'form-select my-3'
+        }}) }}
+        <button type="submit" class="btn btn-primary my-4">Register</button>
+        {{ form_end(reparationForm) }}
+        {% endif %}
+    </div>
+{% endblock %}

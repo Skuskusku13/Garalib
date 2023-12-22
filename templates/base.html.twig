@@ -32,6 +32,15 @@
                         <a class="nav-link" href="{{ path('app_vehicule') }}">Véhicule</a>
                     </li>
                 {% endif %}
+                {% if "ROLE_TECHNICIEN" in app.user.roles %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_reparation') }}">Réparations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_reparation-historique') }}">Historique</a>
+                    </li>
+                {% endif %}
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                 </li>
