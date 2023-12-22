@@ -21,9 +21,13 @@ class Client
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Vehicule::class)]
     private Collection $vehicules;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Reparation::class)]
+    private Collection $reparations;
+
     public function __construct()
     {
         $this->vehicules = new ArrayCollection();
+        $this->reparations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +71,36 @@ class Client
             // set the owning side to null (unless already changed)
             if ($vehicule->getClient() === $this) {
                 $vehicule->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reparation>
+     */
+    public function getReparations(): Collection
+    {
+        return $this->reparations;
+    }
+
+    public function addReparation(Reparation $reparation): static
+    {
+        if (!$this->reparations->contains($reparation)) {
+            $this->reparations->add($reparation);
+            $reparation->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReparation(Reparation $reparation): static
+    {
+        if ($this->reparations->removeElement($reparation)) {
+            // set the owning side to null (unless already changed)
+            if ($reparation->getClient() === $this) {
+                $reparation->setClient(null);
             }
         }
 
